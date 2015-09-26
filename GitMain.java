@@ -1,6 +1,6 @@
 /**
- * @author Cesar Villalobos-Huizar
- * This is meant to a sample program implemented while in
+ * @author
+ * This is meant to a sample program implemente while in
  * UC Bekeley's Data Structures (CS61B) course.
  * 
 */
@@ -14,19 +14,19 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-//final
-public class Gitlet implements Serializable {
-    static GitletVCS gitletVCS;
 
-    public Gitlet() {
-        gitletVCS = new GitletVCS();
+public class GitMain implements Serializable {
+    static MyGit myGit;
+
+    public GitMain() {
+        myGit = new MyGit();
     }
 
     public static void deserialize() {
         try {
             FileInputStream fileIn = new FileInputStream(".gitlet/serCommits/commit.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            gitletVCS = (GitletVCS) in.readObject();
+            myGit = (MyGit) in.readObject();
             in.close();
             fileIn.close();
         } catch (FileNotFoundException e) {
@@ -43,7 +43,7 @@ public class Gitlet implements Serializable {
         try {
             FileOutputStream fileOut = new FileOutputStream(".gitlet/serCommits/commit.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(gitletVCS);
+            out.writeObject(myGit);
             out.close();
             fileOut.close();
         } catch (FileNotFoundException e) {
@@ -55,10 +55,10 @@ public class Gitlet implements Serializable {
 
     public static void checkoutCase(String[] args) {
         if (args.length == 2) {
-            gitletVCS.oneCheckout(args[1]);
+            myGit.oneCheckout(args[1]);
         }
         if (args.length == 3) {
-            gitletVCS.twoCheckout(Integer.parseInt(args[1]), args[2], true);
+            myGit.twoCheckout(Integer.parseInt(args[1]), args[2], true);
         }
     }
 
@@ -66,7 +66,7 @@ public class Gitlet implements Serializable {
         String sToAdd = args[1];
         File fToAdd = new File(sToAdd);
         if (fToAdd.exists()) {
-            gitletVCS.stage(sToAdd);
+            myGit.stage(sToAdd);
         } else {
             System.out.println("File does not exist.");
             return;
@@ -82,7 +82,7 @@ public class Gitlet implements Serializable {
             System.out.println("You must enter a commit message.");
             return;
         }
-        gitletVCS.commit(args[1]);
+        myGit.commit(args[1]);
     }
 
     public static void main(String[] args) {
@@ -91,8 +91,8 @@ public class Gitlet implements Serializable {
         } 
         switch (args[0]) {
             case "init": 
-                Gitlet newG = new Gitlet();
-                gitletVCS.gitletInit();
+                GitMain newG = new GitMain();
+                myGit.myGitInit();
                 serialize();
                 break;
             case "add":
@@ -107,24 +107,24 @@ public class Gitlet implements Serializable {
                 break;
             case "rm": 
                 deserialize();
-                gitletVCS.remove(args[1]);
+                myGit.remove(args[1]);
                 serialize();
                 break;
             case "log": 
                 deserialize();
-                gitletVCS.log();
+                myGit.log();
                 break;
             case "global-log": 
                 deserialize();
-                gitletVCS.globalLog();
+                myGit.globalLog();
                 break;
             case "find":
                 deserialize();
-                gitletVCS.find(args[1]);
+                myGit.find(args[1]);
                 break;
             case "status": 
                 deserialize();
-                gitletVCS.status();
+                myGit.status();
                 break;
             case "checkout":
                 deserialize();
@@ -133,32 +133,32 @@ public class Gitlet implements Serializable {
                 break;
             case "branch":
                 deserialize();
-                gitletVCS.branch(args[1]);
+                myGit.branch(args[1]);
                 serialize();
                 break;
             case "rm-branch" :
                 deserialize();
-                gitletVCS.removeBranch(args[1]);
+                myGit.removeBranch(args[1]);
                 serialize();
                 break; 
             case "reset":
                 deserialize();
-                gitletVCS.reset(Integer.parseInt(args[1]));
+                myGit.reset(Integer.parseInt(args[1]));
                 serialize();
                 break; 
             case "merge":
                 deserialize();
-                gitletVCS.merge(args[1]);
+                myGit.merge(args[1]);
                 serialize();
                 break; 
             case "rebase":
                 deserialize();
-                gitletVCS.rebase(args[1]);
+                myGit.rebase(args[1]);
                 serialize();
                 break; 
             case "i-rebase":
                 deserialize();
-                gitletVCS.iRebase(args[1]);
+                myGit.iRebase(args[1]);
                 serialize();
                 break; 
             default:
