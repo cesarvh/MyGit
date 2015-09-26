@@ -1,3 +1,10 @@
+/**
+ * @author Cesar Villalobos-Huizar
+ * This is meant to a sample program implemented while in
+ * UC Bekeley's Data Structures (CS61B) course.
+ * 
+*/
+
 import java.io.File;
 import java.io.Serializable;
 import java.io.FileInputStream;
