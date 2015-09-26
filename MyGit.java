@@ -24,30 +24,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class MyGit implements Serializable {
-    //final
-    // branch --> commit id hashmaps
-    // commit id --> branch hashmaps
-    CommitTree commitTree;
-    String branch;
-    CommitTree.CommitNode head;
-    int commitID;
-    HashSet<String> otherfiles;
-    HashSet<String> fileChecker;
-    HashSet<String> specificFileChecker;
-    HashSet<String> oldfiles;
-    HashSet<String> newOldFiles;
-    HashSet<String> parentFiles;
-    HashMap<String, String> tobeInherited;
-    HashMap<String, String> newInherits;
-    HashSet<String> stagedQueue = new HashSet<String>();
-    HashSet<String> newpaths = new HashSet<String>();
-    HashSet<String> removals = new HashSet<String>();
-    HashSet<CommitTree.CommitNode> allcommits = new HashSet<CommitTree.CommitNode>();
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-    HashMap<String, CommitTree.CommitNode> branches = 
-                        new HashMap<String, CommitTree.CommitNode>();
-    HashMap<Integer, CommitTree.CommitNode> id2Node = 
-                        new HashMap<Integer, CommitTree.CommitNode>();
+
 
     /* Creds to: 
      * http://www.java-tips.org/java-se-tips/java.util/how-to-get-current-date-time.html*/
@@ -58,10 +35,12 @@ public class MyGit implements Serializable {
         return date;
     }
 
+    /* Initializes the MyGit class instance*/
     public MyGit() {
 
     }
 
+    /* Initializes repository */
     public void myGitInit() { // DONE i think
     }
 
