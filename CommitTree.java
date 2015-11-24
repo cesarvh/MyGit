@@ -3,7 +3,6 @@ import java.util.HashSet;
 import java.io.Serializable;
 import java.io.File;
 
-//final
 public class CommitTree implements Serializable {
     protected CommitNode initialCommit;
 
